@@ -1,3 +1,3 @@
 # Rubik-s-Cube
 
-##step-1
+*step-1
