@@ -7,7 +7,19 @@ public class step_2 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		char cubeArr[][] = {{'R','R','W'}, {'G','C','W'}, {'G', 'B', 'B'}};
+		String moveInput;
 		showCube(cubeArr);
+		
+		while(true) {
+			System.out.print("CUBE> ");
+			Scanner input = new Scanner(System.in);
+			moveInput = input.next();
+			if(moveInput.equals("Q")) {
+				System.out.println("Bye~");
+				input.close();
+				break;
+			}
+		}
 	}
 	
 	//큐브 출력 함수
