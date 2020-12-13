@@ -26,6 +26,8 @@ public class step_3 {
 				getTime(beforeTime, afterTime);
 				input.close();
 				break;
+			} else if(moveInput.equals("RANDOM")) { //입력창에 RANDOM 입력시 큐브 무작위 섞기 기능
+				randomShuffle(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
 			} else {
 				String[] moveArr = moveInput.split("");
 				ArrayList<String> moveArray = moveOrder(moveArr);
@@ -421,4 +423,51 @@ public class step_3 {
 		}
 		System.out.println("경과시간: " + minTime + ":" + secTime);
 	}
+	
+	//큐브 무작위 셔플
+	public static void randomShuffle(char frontArr[][],char backArr[][],char rightArr[][],char leftArr[][],char topArr[][],char bottomArr[][]) {
+		for(int i=0 ; i<10 ; i++) { //10번 반복
+			int randomValue;
+			randomValue = (int) (Math.random()*12 +1); //총 12가지 동작을 1~12라는 숫자로 대입
+			switch(randomValue) {
+			case 1:
+				uMoveLeft(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+			case 2:
+				uMoveRight(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+			case 3:
+				dMoveRight(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+			case 4:
+				dMoveLeft(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+			case 5:
+				fMoveRight(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+			case 6:
+				fMoveLeft(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+			case 7:
+				bMoveLeft(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+			case 8:
+				bMoveRight(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+			case 9:
+				rMoveUp(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+			case 10:
+				rMoveDown(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+			case 11:
+				lMoveDown(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+			case 12:
+				lMoveUp(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+			}
+		}
+		showCube(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+	}		
 }
