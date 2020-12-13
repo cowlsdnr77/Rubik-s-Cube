@@ -12,5 +12,17 @@ public class step_3 {
 		char leftArr[][] = {{'Y','Y','Y'}, {'Y','Y','Y'}, {'Y', 'Y', 'Y'}};
 		char topArr[][] = {{'B','B','B'}, {'B','B','B'}, {'B', 'B', 'B'}};
 		char bottomArr[][] = {{'R','R','R'}, {'R','R','R'}, {'R', 'R', 'R'}};
+		
+	}
+	
+	//큐브 위, 아래 단면 출력
+	public static void showVerticalSide (char Arr[][]) {
+		for(int i = 0; i < 3 ; i++) {
+			System.out.print("                ");
+			for(int j = 0; j < 3 ; j++) {
+				System.out.print(Arr[i][j] + " ");
+			}
+			System.out.println("");
+		}
 	}
 }
