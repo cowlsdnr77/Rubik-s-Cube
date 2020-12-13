@@ -13,6 +13,7 @@ public class step_3 {
 		char topArr[][] = {{'B','B','B'}, {'B','B','B'}, {'B', 'B', 'B'}};
 		char bottomArr[][] = {{'R','R','R'}, {'R','R','R'}, {'R', 'R', 'R'}};
 		String moveInput;
+		int completeCount = 0;
 		
 		showCube(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
 		long beforeTime = System.currentTimeMillis();
@@ -33,6 +34,11 @@ public class step_3 {
 				ArrayList<String> moveArray = moveOrder(moveArr);
 				for(int i=0; i<moveArray.size() ; i++) {
 					showRecentMove(moveArray.get(i), frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				}
+				completeCount = completeCube(completeCount, frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				if(completeCount == 3) {
+					System.out.println("\n****** 축하합니다 큐브완성! ******");
+					break;
 				}
 			}
 		}
@@ -469,5 +475,29 @@ public class step_3 {
 			}
 		}
 		showCube(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
-	}		
+	}
+	
+	//큐브 완성여부 파악 //큐브가 완성되면 3을 리턴한다 
+	public static int completeCube (int completeCount, char frontArr[][],char backArr[][],char rightArr[][],char leftArr[][],char topArr[][],char bottomArr[][]) {
+		Loop1 :
+		for(int i=0 ; i<3 ; i++) {
+			for(int j=0; j<3 ; j++) {
+				if(frontArr[i][j] != frontArr[1][1])
+					break Loop1;
+				if(backArr[i][j] != backArr[1][1])
+					break Loop1;
+				if(rightArr[i][j] != rightArr[1][1])
+					break Loop1;
+				if(leftArr[i][j] != leftArr[1][1])
+					break Loop1;
+				if(topArr[i][j] != topArr[1][1])
+					break Loop1;
+				if(bottomArr[i][j] != bottomArr[1][1])
+					break Loop1;
+			}
+			completeCount++;
+		}
+	    return completeCount;
+	}
+	
 }
