@@ -270,4 +270,25 @@ public class step_3 {
 		}
 	}
 	
+	//R 동작 //가장 오른쪽 부분을 위쪽 방향으로 회전
+	public static void rMoveUp (char frontArr[][],char backArr[][],char rightArr[][],char leftArr[][],char topArr[][],char bottomArr[][]) {
+		char[] tmpFront = {frontArr[0][2],frontArr[1][2],frontArr[2][2]};
+		char[][] tmpRight = {{rightArr[0][0], rightArr[0][1], rightArr[0][2]},
+	 						{rightArr[1][0], rightArr[1][1], rightArr[1][2]},
+	 						{rightArr[2][0], rightArr[2][1], rightArr[2][2]}};
+		
+		for(int i=0 ; i<3; i++) {
+			//front,bottom,back,top 큐브 단면이 회전됨
+			frontArr[i][2] = bottomArr[2-i][2];
+			bottomArr[2-i][2] = backArr[2-i][2];
+			backArr[2-i][2] = topArr[i][2];
+			topArr[i][2] = tmpFront[i];
+			
+			//right 큐브 단면이 회전됨
+			rightArr[i][0] = tmpRight[2][i];
+			rightArr[i][1] = tmpRight[1][i];
+			rightArr[i][2] = tmpRight[0][i];
+		}
+	}
+	
 }
