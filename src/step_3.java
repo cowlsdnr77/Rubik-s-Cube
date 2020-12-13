@@ -123,4 +123,25 @@ public class step_3 {
 			topArr[i][2] = tmpTop[0][i];
 		}
 	}
+	
+	//U' 동작 //가장 윗 부분을 오른쪽으로 회전
+	public static void uMoveRight (char frontArr[][],char backArr[][],char rightArr[][],char leftArr[][],char topArr[][],char bottomArr[][]) {
+		char[] tmpFront = {frontArr[0][0],frontArr[0][1],frontArr[0][2]};
+		char[][] tmpTop = {{topArr[0][0], topArr[0][1], topArr[0][2]},
+				 		   {topArr[1][0], topArr[1][1], topArr[1][2]},
+				 		   {topArr[2][0], topArr[2][1], topArr[2][2]}};
+		
+		for(int i=0 ; i<3 ; i++) {
+			//front,left,back,right 큐브 단면이 회전됨
+			frontArr[0][i] = leftArr[0][i];
+			leftArr[0][i] = backArr[0][2-i];
+			backArr[0][2-i] = rightArr[0][i];
+			rightArr[0][i] = tmpFront[i];
+			
+			//top 큐브단면이 회전됨
+			topArr[2-i][0] = tmpTop[0][i];
+			topArr[2-i][1] = tmpTop[1][i];
+			topArr[2-i][2] = tmpTop[2][i];
+		}
+	}
 }
