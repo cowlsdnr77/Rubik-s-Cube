@@ -44,3 +44,5 @@ STEP-2
 -showRecentMove 메소드
           1)입력된 동작별로 콘솔창에 평면 큐브 출력
           2)switch 조건문 이용
+
+STEP-3
