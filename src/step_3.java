@@ -227,4 +227,26 @@ public class step_3 {
 			frontArr[2-i][2] = tmpFront[2][i];
 		}
 	}
+	
+	//B 동작 //가장 뒷 부분을 왼쪽 방향으로 회전
+	public static void bMoveLeft (char frontArr[][],char backArr[][],char rightArr[][],char leftArr[][],char topArr[][],char bottomArr[][]) {
+		char[] tmpTop = {topArr[0][0],topArr[0][1],topArr[0][2]};
+		char[][] tmpBack = {{backArr[0][0], backArr[0][1], backArr[0][2]},
+							 {backArr[1][0], backArr[1][1], backArr[1][2]},
+							 {backArr[2][0], backArr[2][1], backArr[2][2]}};
+
+		for(int i=0 ; i<3 ; i++) {
+			//top,right,bottom,left 큐브 단면이 회전됨
+			topArr[0][i] = rightArr[i][2];
+			rightArr[i][2] = bottomArr[0][2-i];
+			bottomArr[0][2-i] = leftArr[2-i][0];
+			leftArr[2-i][0] = tmpTop[i];
+			
+			//back 큐브 단면이 회전됨
+			backArr[2-i][0] = tmpBack[0][i];
+			backArr[2-i][1] = tmpBack[1][i];
+			backArr[2-i][2] = tmpBack[2][i];
+		}
+	}
+	
 }
