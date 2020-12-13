@@ -112,4 +112,24 @@ public class step_2 {
 		Arr[0][Arr.length-1] = tmp;
 		return Arr;
 	}
+	
+	//L 동작 //가장 왼쪽 줄을 아래로 한 칸 밀기
+	public static char[][] lMoveDown (char Arr[][]) {
+		char tmp = Arr[Arr.length-1][0];
+		for(int i=Arr.length-1 ; i > 0 ; i--) {
+			Arr[i][0] = Arr[i-1][0];
+		}
+		Arr[0][0] = tmp;
+		return Arr;
+	}
+		
+	//L' 동작 //가장 왼쪽 줄을 위로 한 칸 밀기
+	public static char[][] lMoveUp (char Arr[][]) {
+		char tmp = Arr[0][0];
+		for(int i=0 ; i < Arr.length-1 ; i++) {
+			Arr[i][0] = Arr[i+1][0];
+		}
+		Arr[Arr.length-1][0] = tmp;
+		return Arr;
+	}
 }
