@@ -22,6 +22,9 @@ public class step_2 {
 				String[] moveArr = moveInput.split("");
 				ArrayList<String> moveArray = moveOrder(moveArr);
 				System.out.println("");
+				for(int i=0; i<moveArray.size() ; i++) {
+					cubeArr = showRecentMove(moveArray.get(i), cubeArr);
+				}
 			}
 		}
 	}
@@ -131,5 +134,38 @@ public class step_2 {
 		}
 		Arr[Arr.length-1][0] = tmp;
 		return Arr;
+	}
+	
+	//입력된 동작별로 콘솔창에 평면 큐브 출력
+	public static char [][] showRecentMove (String move, char Arr[][]) {
+		System.out.println(move);
+		switch(move) {
+			case "U":
+				Arr = uMoveLeft(Arr);
+				break;
+			case "U'":
+				Arr = uMoveRight(Arr);
+				break;
+			case "R":
+				Arr = rMoveUp(Arr);
+				break;
+			case "R'":
+				Arr = rMoveDown(Arr);
+				break;
+			case "L":
+				Arr = lMoveDown(Arr);
+				break;
+			case "L'":
+				Arr = lMoveUp(Arr);
+				break;
+			case "B":
+				Arr = bMoveRight(Arr);
+				break;
+			case "B'":
+				Arr = bMoveLeft(Arr);
+				break;
+		}
+		showCube(Arr);
+		return Arr;	
 	}
 }
