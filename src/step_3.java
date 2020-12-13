@@ -15,12 +15,15 @@ public class step_3 {
 		String moveInput;
 		
 		showCube(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+		long beforeTime = System.currentTimeMillis();
 		
 		while(true) {
 			System.out.print("\nCUBE> ");
 			Scanner input = new Scanner(System.in);
-			moveInput = input.next(); //엔터 두번 쳐야함
+			moveInput = input.next();
 			if(moveInput.equals("Q")) {
+				long afterTime = System.currentTimeMillis();
+				getTime(beforeTime, afterTime);
 				input.close();
 				break;
 			} else {
@@ -400,4 +403,22 @@ public class step_3 {
 		showCube(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
 	}
 	
+	//실행시간 게산
+	public static void getTime(long beforeTime, long afterTime) {
+		long minDiffTime = (afterTime - beforeTime)/60000; //분 단위 계산
+		long secDiffTime = (afterTime - beforeTime)%60000/1000; //초 단위 계산
+		String minTime;
+		String secTime;
+		if(minDiffTime>=0 && minDiffTime<10) {
+			minTime = "0" + String.valueOf(minDiffTime);
+		} else {
+			minTime = String.valueOf(minDiffTime);
+		}
+		if(secDiffTime>=0 && secDiffTime<10) {
+			secTime = "0" + String.valueOf(secDiffTime);
+		} else {
+			secTime = String.valueOf(secDiffTime);
+		}
+		System.out.println("경과시간: " + minTime + ":" + secTime);
+	}
 }
