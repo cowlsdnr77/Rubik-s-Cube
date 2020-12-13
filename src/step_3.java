@@ -332,4 +332,25 @@ public class step_3 {
 		}
 	}
 	
+	//L' 동작 //가장 왼쪽 부분을 위쪽 방향으로 회전
+	public static void lMoveUp (char frontArr[][],char backArr[][],char rightArr[][],char leftArr[][],char topArr[][],char bottomArr[][]) {
+		char[] tmpFront = {frontArr[0][0],frontArr[1][0],frontArr[2][0]};
+		char[][] tmpLeft = {{leftArr[0][0], leftArr[0][1], leftArr[0][2]},
+	 						{leftArr[1][0], leftArr[1][1], leftArr[1][2]},
+	 						{leftArr[2][0], leftArr[2][1], leftArr[2][2]}};
+		
+		for(int i=0 ; i<3; i++) {
+			//front,bottom,back,top 큐브 단면이 회전됨
+			frontArr[i][0] = bottomArr[2-i][0];
+			bottomArr[2-i][0] = backArr[2-i][0];
+			backArr[2-i][0] = topArr[i][0];
+			topArr[i][0] = tmpFront[i];
+			
+			//left 큐브 단면이 회전됨
+			leftArr[2-i][0] = tmpLeft[0][i];
+			leftArr[2-i][1] = tmpLeft[1][i];
+			leftArr[2-i][2] = tmpLeft[2][i];
+		}
+	}
+	
 }
