@@ -26,6 +26,9 @@ public class step_3 {
 			} else {
 				String[] moveArr = moveInput.split("");
 				ArrayList<String> moveArray = moveOrder(moveArr);
+				for(int i=0; i<moveArray.size() ; i++) {
+					showRecentMove(moveArray.get(i), frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				}
 			}
 		}
 	}
@@ -351,6 +354,50 @@ public class step_3 {
 			leftArr[2-i][1] = tmpLeft[1][i];
 			leftArr[2-i][2] = tmpLeft[2][i];
 		}
+	}
+	
+	//입력된 동작별로 콘솔창에 큐브 출력
+	public static void showRecentMove (String move, char frontArr[][],char backArr[][],char rightArr[][],char leftArr[][],char topArr[][],char bottomArr[][]) {
+		System.out.println("\n"+ move);
+		switch(move) {
+			case "U":
+				uMoveLeft(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+			case "U'":
+				uMoveRight(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+			case "D":
+				dMoveRight(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+			case "D'":
+				dMoveLeft(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+			case "F":
+				fMoveRight(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+			case "F'":
+				fMoveLeft(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+			case "B":
+				bMoveLeft(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+			case "B'":
+				bMoveRight(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+			case "R":
+				rMoveUp(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+			case "R'":
+				rMoveDown(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+			case "L":
+				lMoveDown(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+			case "L'":
+				lMoveUp(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+				break;
+		}
+		showCube(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
 	}
 	
 }
