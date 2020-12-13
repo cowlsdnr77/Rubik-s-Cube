@@ -185,4 +185,25 @@ public class step_3 {
 			bottomArr[i][2] = tmpBottom[0][i];
 		}
 	}
+	
+	//F 동작 //가장 앞 부분을 오른쪽 방향으로 회전
+	public static void fMoveRight (char frontArr[][],char backArr[][],char rightArr[][],char leftArr[][],char topArr[][],char bottomArr[][]) {
+		char[] tmpTop = {topArr[2][0],topArr[2][1],topArr[2][2]};
+		char[][] tmpFront = {{frontArr[0][0], frontArr[0][1], frontArr[0][2]},
+							 {frontArr[1][0], frontArr[1][1], frontArr[1][2]},
+							 {frontArr[2][0], frontArr[2][1], frontArr[2][2]}};
+
+		for(int i=0 ; i<3 ; i++) {
+			//top,left,bottom,right 큐브 단면이 회전됨
+			topArr[2][i] = leftArr[2-i][2];
+			leftArr[2-i][2] = bottomArr[2][2-i];
+			bottomArr[2][2-i] = rightArr[i][0];
+			rightArr[i][0] = tmpTop[i];
+			
+			//front 큐브 단면이 회전됨
+			frontArr[i][0] = tmpFront[2][i];
+			frontArr[i][1] = tmpFront[1][i];
+			frontArr[i][2] = tmpFront[0][i];
+		}
+	}
 }
