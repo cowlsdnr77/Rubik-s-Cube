@@ -100,4 +100,27 @@ public class step_3 {
 		}
 		return moveArray;
 	}
+	
+	//U 동작 /가장 윗 부분을 왼쪽 방향으로 회전
+	//반환값이 없는 메서드를 반환값이 있는 메서드로 바꾸는 방법
+	//메서드는 단 하나의 값만 반환할 수 있지만 참조형 매개변수를 사용하는 메서드를 응용하면 여러 개의 값을 반환하는 메서드를 만들 수 있음
+	public static void uMoveLeft (char frontArr[][],char backArr[][],char rightArr[][],char leftArr[][],char topArr[][],char bottomArr[][]) {
+		char[] tmpFront = {frontArr[0][0],frontArr[0][1],frontArr[0][2]};
+		char[][] tmpTop = {{topArr[0][0], topArr[0][1], topArr[0][2]},
+				 		   {topArr[1][0], topArr[1][1], topArr[1][2]},
+				 		   {topArr[2][0], topArr[2][1], topArr[2][2]}};
+		
+		for(int i=0 ; i<3 ; i++) {
+			//front,right,back,left 큐브 단면이 회전됨
+			frontArr[0][i] = rightArr[0][i];
+			rightArr[0][i] = backArr[0][2-i];
+			backArr[0][2-i] = leftArr[0][i];
+			leftArr[0][i] = tmpFront[i];
+			
+			//top 큐브단면이 회전됨
+			topArr[i][0] = tmpTop[2][i];
+			topArr[i][1] = tmpTop[1][i];
+			topArr[i][2] = tmpTop[0][i];
+		}
+	}
 }
