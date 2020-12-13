@@ -72,4 +72,24 @@ public class step_2 {
 		Arr[0][0] = tmp;
 		return Arr;
 	}
+	
+	//B 동작 //가장 아랫줄을 오른쪽으로 한 칸 밀기
+	public static char[][] bMoveRight (char Arr[][]) {
+		char tmp = Arr[Arr.length-1][Arr.length-1];
+		for(int i=Arr.length-1 ; i > 0 ; i--) {
+			Arr[Arr.length-1][i] = Arr[Arr.length-1][i-1];
+		}
+		Arr[Arr.length-1][0] = tmp;
+		return Arr;
+	}
+		
+	//B' 동작 //가장 아랫줄을 왼쪽으로 한 칸 밀기
+	public static char[][] bMoveLeft (char Arr[][]) {
+		char tmp = Arr[Arr.length-1][0];
+		for(int i=0 ; i < Arr.length-1 ; i++) {
+			Arr[Arr.length-1][i] = Arr[Arr.length-1][i+1];
+		}
+		Arr[Arr.length-1][Arr[0].length-1] = tmp;
+		return Arr;
+	}
 }
