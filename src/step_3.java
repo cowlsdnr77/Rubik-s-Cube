@@ -25,4 +25,26 @@ public class step_3 {
 			System.out.println("");
 		}
 	}
+	
+	//큐브 뒤, 오른쪽, 앞, 왼쪽 단면 출력
+	public static void showHorizontalSide (char backArr[][],char rightArr[][],char frontArr[][], char leftArr[][]) {
+		for(int i = 0; i < 3 ; i++) {
+			for(int j = 0; j < 3 ; j++) {
+				System.out.print(backArr[i][j] + " ");
+			}
+			System.out.print("     ");
+			for(int j = 0; j < 3 ; j++) {
+				System.out.print(rightArr[i][j] + " ");
+			}
+			System.out.print("     ");
+			for(int j = 0; j < 3 ; j++) {
+				System.out.print(frontArr[i][j] + " ");
+			}
+			System.out.print("     ");
+			for(int j = 0; j < 3 ; j++) {
+				System.out.print(leftArr[i][j] + " ");
+			}
+			System.out.println("");
+		}
+	}
 }
