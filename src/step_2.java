@@ -52,4 +52,24 @@ public class step_2 {
 		}
 		return moveArray;
 	}
+	
+	//U 동작 //가장 윗줄을 왼쪽으로 한 칸 밀기
+	public static char[][] uMoveLeft (char Arr[][]) {
+		char tmp = Arr[0][0];
+		for(int i=0 ; i < Arr[0].length-1 ; i++) {
+			Arr[0][i] = Arr[0][i+1];
+		}
+		Arr[0][Arr[0].length-1] = tmp;
+		return Arr;
+	}
+		
+	//U' 동작 //가장 윗줄을 오른쪽으로 한 칸 밀기
+	public static char[][] uMoveRight (char Arr[][]) {
+		char tmp = Arr[0][Arr.length-1];
+		for(int i=Arr[0].length-1 ; i > 0 ; i--) {
+			Arr[0][i] = Arr[0][i-1];
+		}
+		Arr[0][0] = tmp;
+		return Arr;
+	}
 }
