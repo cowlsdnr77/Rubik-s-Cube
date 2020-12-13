@@ -165,4 +165,24 @@ public class step_3 {
 			bottomArr[2-i][2] = tmpBottom[2][i];
 		}
 	}
+	
+	//D' 동작 //가장 아랫 부분을 왼쪽 방향으로 회전
+	public static void dMoveLeft (char frontArr[][],char backArr[][],char rightArr[][],char leftArr[][],char topArr[][],char bottomArr[][]) {
+		char[] tmpFront = {frontArr[2][0],frontArr[2][1],frontArr[2][2]};
+		char[][] tmpBottom = {{bottomArr[0][0], bottomArr[0][1], bottomArr[0][2]},
+		 		   		   	  {bottomArr[1][0], bottomArr[1][1], bottomArr[1][2]},
+		 		   		   	  {bottomArr[2][0], bottomArr[2][1], bottomArr[2][2]}};
+		for(int i=0 ; i<3 ; i++) {
+			//front,right,back,left 큐브 단면이 회전됨
+			frontArr[2][i] = rightArr[2][i];
+			rightArr[2][i] = backArr[2][2-i];
+			backArr[2][2-i] = leftArr[2][i];
+			leftArr[2][i] = tmpFront[i];
+			
+			//bottom 큐브 단면이 회전됨
+			bottomArr[i][0] = tmpBottom[2][i];
+			bottomArr[i][1] = tmpBottom[1][i];
+			bottomArr[i][2] = tmpBottom[0][i];
+		}
+	}
 }
