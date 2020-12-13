@@ -14,6 +14,7 @@ public class step_3 {
 		char bottomArr[][] = {{'R','R','R'}, {'R','R','R'}, {'R', 'R', 'R'}};
 		String moveInput;
 		int completeCount = 0;
+		int moveCount = 0;
 		
 		showCube(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
 		long beforeTime = System.currentTimeMillis();
@@ -24,7 +25,7 @@ public class step_3 {
 			moveInput = input.next();
 			if(moveInput.equals("Q")) {
 				long afterTime = System.currentTimeMillis();
-				getTime(beforeTime, afterTime);
+				showResult(beforeTime,afterTime,moveCount);
 				input.close();
 				break;
 			} else if(moveInput.equals("RANDOM")) { //입력창에 RANDOM 입력시 큐브 무작위 섞기 기능
@@ -34,10 +35,13 @@ public class step_3 {
 				ArrayList<String> moveArray = moveOrder(moveArr);
 				for(int i=0; i<moveArray.size() ; i++) {
 					showRecentMove(moveArray.get(i), frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
+					moveCount++; //조작갯수 카운트
 				}
 				completeCount = completeCube(completeCount, frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
 				if(completeCount == 3) {
+					long afterTime = System.currentTimeMillis();
 					System.out.println("\n****** 축하합니다 큐브완성! ******");
+					showResult(beforeTime,afterTime,moveCount);
 					break;
 				}
 			}
@@ -500,4 +504,9 @@ public class step_3 {
 	    return completeCount;
 	}
 	
+	public static void showResult(long beforeTime, long afterTime, int moveCount) {
+		getTime(beforeTime, afterTime);
+		System.out.println("조작갯수: " + moveCount);
+		System.out.println("이용해주셔서 감사합니다. 뚜뚜뚜.");
+	}
 }
