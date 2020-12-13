@@ -124,7 +124,7 @@ public class step_3 {
 		}
 	}
 	
-	//U' 동작 //가장 윗 부분을 오른쪽으로 회전
+	//U' 동작 //가장 윗 부분을 오른쪽 방향으로 회전
 	public static void uMoveRight (char frontArr[][],char backArr[][],char rightArr[][],char leftArr[][],char topArr[][],char bottomArr[][]) {
 		char[] tmpFront = {frontArr[0][0],frontArr[0][1],frontArr[0][2]};
 		char[][] tmpTop = {{topArr[0][0], topArr[0][1], topArr[0][2]},
@@ -142,6 +142,27 @@ public class step_3 {
 			topArr[2-i][0] = tmpTop[0][i];
 			topArr[2-i][1] = tmpTop[1][i];
 			topArr[2-i][2] = tmpTop[2][i];
+		}
+	}
+	
+	//D 동작 //가장 아랫 부분을 오른쪽 방향으로 회전
+	public static void dMoveRight (char frontArr[][],char backArr[][],char rightArr[][],char leftArr[][],char topArr[][],char bottomArr[][]) {
+		char[] tmpFront = {frontArr[2][0],frontArr[2][1],frontArr[2][2]};
+		char[][] tmpBottom = {{bottomArr[0][0], bottomArr[0][1], bottomArr[0][2]},
+		 		   		   	  {bottomArr[1][0], bottomArr[1][1], bottomArr[1][2]},
+		 		   		   	  {bottomArr[2][0], bottomArr[2][1], bottomArr[2][2]}};
+		
+		for(int i=0 ; i<3 ; i++) {
+			//front,left,back,right 큐브 단면이 회전됨
+			frontArr[2][i] = leftArr[2][i];
+			leftArr[2][i] = backArr[2][2-i];
+			backArr[2][2-i] = rightArr[2][i];
+			rightArr[2][i] = tmpFront[i];
+			
+			//bottom 큐브 단면이 회전됨
+			bottomArr[2-i][0] = tmpBottom[0][i];
+			bottomArr[2-i][1] = tmpBottom[1][i];
+			bottomArr[2-i][2] = tmpBottom[2][i];
 		}
 	}
 }
