@@ -13,6 +13,7 @@ public class step_3 {
 		char topArr[][] = {{'B','B','B'}, {'B','B','B'}, {'B', 'B', 'B'}};
 		char bottomArr[][] = {{'R','R','R'}, {'R','R','R'}, {'R', 'R', 'R'}};
 		
+		showCube(frontArr, backArr, rightArr, leftArr, topArr, bottomArr);
 	}
 	
 	//큐브 위, 아래 단면 출력
@@ -46,5 +47,15 @@ public class step_3 {
 			}
 			System.out.println("");
 		}
+	}
+	
+	//모든 큐브 단면 출력
+	public static void showCube (char frontArr[][],char backArr[][],char rightArr[][],char leftArr[][],char topArr[][],char bottomArr[][]) {
+		//System.out.print("          ");
+		showVerticalSide(topArr);
+		System.out.println("");
+		showHorizontalSide(backArr,rightArr,frontArr,leftArr);
+		System.out.println("");
+		showVerticalSide(bottomArr);
 	}
 }
